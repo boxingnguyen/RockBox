@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Controller</title>
-	<script src="bower_components/jquery/dist/jquery.min.js" async></script>
-	<script src="main.js" type="text/javascript" async></script>
+	<title>PlayingTime</title>
+  	<link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script src="bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="main.js" type="text/javascript"></script>
 	<style type="text/css">
 		h1 {
 			text-align: center;
 		}
-		.btn {
+		.group-btn {
 			margin: 15% 32%;
 			position: relative;
 		}
@@ -27,7 +29,7 @@
 		.btn4 {
 			margin: 27px 0 0 -17px;
 		}
-		button.btn-camera	{
+		button.btn-stop	{
 			position: absolute;
 			margin: 28px 0px 0 247px;
 			width: 90px;
@@ -42,13 +44,13 @@
 	</style>
 </head>
 <body>
-	<h1>Controller</h1>
-	<div class="btn">
-		<button class="btn1">forward</button>
-		<button class="btn2">backward</button>
-		<button class="btn3">right</button>
-		<button class="btn4">left</button>
-		<button class="btn-camera">Stop</button>
+	<h1>Đi Chơi Tham Mự</h1>
+	<div class="group-btn">
+		<button class="btn btn-success btn1">forward</button>
+		<button class="btn btn-success btn2">backward</button>
+		<button class="btn btn-success btn3">right</button>
+		<button class="btn btn-success btn4">left</button>
+		<button class="btn btn-danger btn-stop">Stop</button>
 	</div>
 </body>
 </html>
