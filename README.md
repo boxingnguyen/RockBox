@@ -12,4 +12,4 @@ This livestream part:
   cd RPi_Cam_Web_Interface 
   ./install.sh
   ```
-and then html folder will be created in /var/www, you need modify this folder by add such php files note that add code of index.php to html/index.php) and main.js to html/js
+and then html folder will be created in /var/www, you need modify this folder by add controller.php reset.php to html/ note that add code of index.php to html/index.php and main.js to html/js
