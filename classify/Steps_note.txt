@@ -1,0 +1,58 @@
+python -m scripts.label_image \
+    --graph=tf_files/retrained_graph_animals.pb  \
+    --image=tf_files/animals/cats/cat.1098.jpg
+
+
+    python -m scripts.retrain \
+  --bottleneck_dir=tf_files/bottlenecks \
+  --how_many_training_steps=10000 \
+  --learning_rate=0.0005 \
+  --model_dir=tf_files/models/ \
+  --summaries_dir=tf_files/training_summaries/"${ARCHITECTURE}" \
+  --output_graph=tf_files/retrained_graph_signs.pb \
+  --output_labels=tf_files/retrained_labels_signs.txt \
+  --architecture="${ARCHITECTURE}" \
+  --image_dir=tf_files/traffic_signs
+
+
+
+  di choi time
+
+Inception V3 has a first-choice accuracy of 78% on ImageNet, but is the model is 85MB, and requires many times more processing than even the largest MobileNet configuration, which achieves 70.5% accuracy, with just a 19MB download.
+Pick the following configuration options:
+* Input image resolution: 128,160,192, or 224px. Unsurprisingly, feeding in a higher resolution image takes more processing time, but results in better classification accuracy. We recommend 224 as an initial setting.
+* The relative size of the model as a fraction of the largest MobileNet: 1.0, 0.75, 0.50, or 0.25. We recommend 0.5 as an initial setting. The smaller models run significantly faster, at a cost of accuracy.
+
+
+
+Step1: mkdir tf_files 
+Step2: mkdir folder of object to classifier
+step3: define :
+IMAGE_SIZE=192
+ARCHITECTURE="mobilenet_0.50_${IMAGE_SIZE}"
+step4
+start tensorBoard 
+tensorboard --logdir tf_files/training_summaries &
+This command will fail with the following error if you already have a tensorboard process running:  ERROR:tensorflow:TensorBoard attempted to bind to port 6006, but it was already in use
+You can kill all existing TensorBoard instances with:
+pkill -f "tensorboard"
+
+step5
+run the training
+python -m scripts.retrain \
+  --bottleneck_dir=tf_files/bottlenecks \
+  --how_many_training_steps=500 \
+  --model_dir=tf_files/models/ \
+  --summaries_dir=tf_files/training_summaries/"${ARCHITECTURE}" \
+  --output_graph=tf_files/retrained_graph.pb \
+  --output_labels=tf_files/retrained_labels.txt \
+  --architecture="${ARCHITECTURE}" \
+  --image_dir=tf_files/flower_photos
+( default if remove how_many_training_steps : 4,000 iterations. )
+
+
+step 6: classifiy
+python -m scripts.label_image \
+    --graph=tf_files/retrained_graph_signs.pb  \
+    --image=tf_files/flower_photos/daisy/21652746_cc379e0eea_m.jpg
+
