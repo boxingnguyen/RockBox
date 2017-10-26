@@ -16,7 +16,7 @@
                     move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file);
                     $image = $target_file;
 
-                    $checkType = shell_exec("python test.py");
+                    $checkType = shell_exec("python test_jpg.py");
                     if (isset($checkType)) {
                     	echo "<div class='result'>" . $checkType . "</div>";
                     } else {
